@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <style>
+    body {
+    background-color: #000000;
+    color: white
+    }
+  </style>
+ </head>
+  <body>
+    <div class="text-center" id="words"> test </div>
+            <form id="answer" name="answer"  method="post" >
+            <div class="text-center">       
+                
+                <textarea disabled  style="resize: none;"  id="output-textarea" name="xxx" rows="1" cols="25"></textarea><br>
+                <button class="btn btn-success" id="start-btn" type="button" name="start-btn" >start</button><br>
+            </div>
+            <div class="text-center" id="words"> test2 </div>
+            <form id="answer" name="answer"  method="post" >
+            <div class="text-center">       
+                
+                <textarea disabled  style="resize: none;"  id="output-textarea" name="xxx" rows="1" cols="25"></textarea><br>
+                <button class="btn btn-success" id="start-btn" type="button" name="start-btn" >start</button><br>
+            </div>
+            <div class="text-center" id="words"> test3 </div>
+            <form id="answer" name="answer"  method="post" >
+            <div class="text-center">       
+                
+                <textarea disabled  style="resize: none;"  id="output-textarea" name="xxx" rows="1" cols="25"></textarea><br>
+                <button class="btn btn-success" id="start-btn" type="button" name="start-btn" >start</button><br>
+            </div>
+                                               
+            <script>
+                attachEvents();
+                function attachEvents() 
+                {
+                    let workingEls = getWorkingEls();
+                    workingEls.forEach(attachEvent);
+                }
+                function getWorkingEls() 
+                {
+                    return [
+                        {
+                            id_start_btn: "#start-btn",
+                            id_output_txta: "#output-textarea",
+                            id_score: "#score",
+                        }
+                    ]
+                }
+                function attachEvent(element, index, array) 
+                {
+                    let result;
+                    let startBtnEl = document.querySelector(element.id_start_btn);
+                    let outputTextAreaEl = document.querySelector(element.id_output_txta);
+                    let scoreTextAreaEl = document.querySelector(element.id_score);
+                    // new speech recognition object
+                    let speechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+                    let recognition = new speechRecognition();
+                    
+                
+                    // captures single result each time
+                    recognition.continuous = false
+                    startBtnEl.onclick = function () {
+                        outputTextAreaEl.value = "";
+                        recognition.start();
+                    };
+                
+                /*  recognition.onend = function() {
+                        startBtnEl.disabled = false;
+                    } */
+                
+                    recognition.onresult = function (event) 
+                    {
+                        
+                        let current = event.resultIndex;
+                        outputTextAreaEl.value += `${event.results[current][0].transcript}`; // (${event.results[current][0].confidence})
+                        startBtnEl.disabled = true;
+                        
+                    }
+                    
+                    recognition.onnomatch = function() 
+                    {
+                        console.log('Speech not recognized');
+                    }
+                }
+            </script>
+</body>
+</html>
