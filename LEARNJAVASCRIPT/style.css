@@ -15,7 +15,7 @@ section
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgb(0, 0, 0);
+    background: #fff;
 }
 header
 {
@@ -42,7 +42,7 @@ header ul li
 {
     list-style: none;
 }
-header ul li
+header ul li a
 {
     display: inline-block;
     color: #333;
