@@ -67,5 +67,19 @@ header ul li a
 {
     width: 600px;
     display: flex;
-    
+    justify-content: flex-end;
+    padding-right: 50px;
+    margin-top: 50px;
+}
+.content .imgBox img
+{
+    max-width: 340px;
+}
+.thumb
+{
+    position: absolute;
+    left: 50%;
+    bottom: 20%;
+    transform: translateX(-50%);
+    display: flex;
 }
