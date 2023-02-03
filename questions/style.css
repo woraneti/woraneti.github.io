@@ -58,3 +58,14 @@ header ul li a
     justify-content: space-between;
     align-items: center;
 }
+.content .textBox
+{
+    position: relative;
+    max-width: 600px;
+}
+.content .imgBox
+{
+    width: 600px;
+    display: flex;
+    
+}
