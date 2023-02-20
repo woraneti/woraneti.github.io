@@ -87,12 +87,15 @@
                         console.log('question:'+stringQuestion);
                         console.log('said:'+saidText);
                         console.log('-----------------');
-
-
+                        
+                        
+                        const sentence1 = question
+                        const sentence2 = outputTextAreaEl 
+                        const similarity = compareSentences(sentence1, sentence2);
+                        console.log(similarity + "% similar")
 
                         outputTextAreaEl.value += saidText;
                         startBtnEl.disabled = true;
-                        
                     }
                     
                     recognition.onnomatch = function() 
@@ -100,6 +103,16 @@
                         console.log('Speech not recognized');
                     }
                 }
+                function compareSentences(question, outputTextAreaEl) {
+                    const set1 = new Set(question.split(""));
+                    const set2 = new Set(outputTextAreaEl.split(""));
+                    const intersection = new Set([...set1].filter(x => set2.has(x)));
+                    const union = new Set([...set1,...set2]);
+                    const similarity = intersection.size / union.size;
+                    const percentSimilarity = similarity * 100;
+                    return percentSimilarity;
+                }
+
             </script>
 </body>
 </html>
