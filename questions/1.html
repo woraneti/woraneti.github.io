@@ -88,9 +88,7 @@
                         console.log('said:'+saidText);
                         console.log('-----------------');
                         // แก้ sentence2
-                        const sentence1 = question
-                        const sentence2 = outputTextAreaEl 
-                        const similarity = compareSentences(sentence1, sentence2);
+                        const similarity = compareSentences(stringQuestion, saidText);
                         console.log(similarity + "% similar")
 
                         outputTextAreaEl.value += saidText;
