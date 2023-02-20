@@ -87,8 +87,7 @@
                         console.log('question:'+stringQuestion);
                         console.log('said:'+saidText);
                         console.log('-----------------');
-                        
-                        
+                        // แก้ sentence2
                         const sentence1 = question
                         const sentence2 = outputTextAreaEl 
                         const similarity = compareSentences(sentence1, sentence2);
@@ -103,9 +102,9 @@
                         console.log('Speech not recognized');
                     }
                 }
-                function compareSentences(question, outputTextAreaEl) {
-                    const set1 = new Set(question.split(""));
-                    const set2 = new Set(outputTextAreaEl.split(""));
+                function compareSentences(sentence1, sentence2) {
+                    const set1 = new Set(sentence1.split(""));
+                    const set2 = new Set(sentence2.split(""));
                     const intersection = new Set([...set1].filter(x => set2.has(x)));
                     const union = new Set([...set1,...set2]);
                     const similarity = intersection.size / union.size;
