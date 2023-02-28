@@ -31,8 +31,11 @@
                     </div>
                     <textarea disabled  style="resize: none;"  id="output-textarea" name="xxx" rows="10" cols="60"></textarea><br>
                     <button class="btn btn-danger" id="start-btn" type="button" name="start-btn">start</button>
-                    <P id="score"></P>
                 </div>
+                <div class="answerTextBox">
+                    <h4><P id="score"></P></h4>
+                </div>
+                
             <div class="imgBox">
                 <img src="1.png" class="character">
             </div>
@@ -96,7 +99,7 @@
                         outputTextAreaEl.value += saidText;
                         startBtnEl.disabled = true;
                         if (similarity == 100){
-                            scoreElement.innerHTML ='xxxxxxxx';
+                            scoreElement.innerHTML ='13579';
                         }
                     }
                     
