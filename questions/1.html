@@ -93,7 +93,7 @@
                         console.log('said:'+saidText);
                         console.log('-----------------');
                         // แก้ sentence2
-                        const similarity = compareSentences(stringQuestion, saidText);
+                        const similarity = compareSentences(toLowerCase(stringQuestion), toLowerCase(saidText));
                         console.log(similarity + "% similar")
 
                         outputTextAreaEl.value += saidText;
