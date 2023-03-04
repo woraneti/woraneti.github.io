@@ -89,11 +89,11 @@
                         let saidText = `${event.results[current][0].transcript}`;
 
                         console.log('-----------------');
-                        console.log('question:'+stringQuestion);
-                        console.log('said:'+saidText);
+                        console.log('question:'+stringQuestion.toLocaleLowerCase());
+                        console.log('said:'+saidText.toLocaleLowerCase());
                         console.log('-----------------');
                         // แก้ sentence2
-                        const similarity = compareSentences(toLowerCase(stringQuestion), toLowerCase(saidText));
+                        const similarity = compareSentences(stringQuestion.toLocaleLowerCase(), saidText.toLocaleLowerCase());
                         console.log(similarity + "% similar")
 
                         outputTextAreaEl.value += saidText;
